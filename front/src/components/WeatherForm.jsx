@@ -1,5 +1,7 @@
 import Loader from "./Loader";
 
+import PropTypes from "prop-types";
+
 export default function WeatherForm({
   city,
   setCity,
@@ -20,17 +22,15 @@ export default function WeatherForm({
         className={`border rounded-md px-3 py-2 outline-none transition
         focus:ring-2
         
-        ${
-          error.error
+        ${error.error
             ? "border-red-500 focus:ring-red-300"
             : "border-gray-300 focus:ring-blue-300"
-        }
+          }
         bg-transparent
-        ${
-          darkMode
+        ${darkMode
             ? "text-white placeholder-gray-400"
             : "text-black placeholder-gray-500"
-        }`}
+          }`}
       />
 
       {error.error && <p className="text-red-500 text-sm">{error.message}</p>}
@@ -48,3 +48,15 @@ export default function WeatherForm({
     </form>
   );
 }
+
+WeatherForm.propTypes = {
+  city: PropTypes.string.isRequired,
+  setCity: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.shape({
+    error: PropTypes.bool,
+    message: PropTypes.string,
+  }).isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};

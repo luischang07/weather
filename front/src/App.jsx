@@ -32,7 +32,7 @@ export default function App() {
   const toggleUnit = () => {//funcion para  la unidad d medida esarla alternando 
     setUnit((prev) => (prev === "C" ? "F" : "C"));
   };
-//funcion para obtener el fondo segun el clima
+  //funcion para obtener el fondo segun el clima
   const getWeatherBackground = () => {
     if (!weather.conditionText)
       return "bg-gradient-to-b from-sky-300 to-blue-500";
@@ -51,7 +51,7 @@ export default function App() {
 
     return "bg-gradient-to-b from-blue-400 to-blue-700";
   };
-//funcion que se ejecuta al enviar el formulario
+  //funcion que se ejecuta al enviar el formulario
   const onSubmit = async (e) => {
     e.preventDefault();
     setError({ error: false, message: "" });
@@ -59,8 +59,8 @@ export default function App() {
 
     try {
       if (!city.trim()) throw { message: "El campo ciudad es obligatorio" };
-// hace la peticion al backend
-      const res = await axios.get("http://localhost:3000/api/weather", { //hace una petición a tu backend Node/Express.
+      // hace la peticion al backend
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/weather`, {
         params: { city: city },
       });
 
@@ -86,7 +86,7 @@ export default function App() {
         className={`relative w-full max-w-md p-6 rounded-3xl shadow-2xl transition-colors duration-500 backdrop-blur-sm
         ${darkMode ? "bg-slate-800/95" : "bg-white/90"}`}
       >
-      {/* Botón para cambiar Modo Oscuro / Claro */}
+        {/* Botón para cambiar Modo Oscuro / Claro */}
         <button
           onClick={() => setDarkMode(!darkMode)}
           className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full
@@ -98,7 +98,7 @@ export default function App() {
         <h1 className="text-3xl font-extrabold text-center mb-6 tracking-tight text-gray-800 dark:text-white">
           🌤 Weather App
         </h1>
-{/*formulario de búsqueda */}
+        {/*formulario de búsqueda */}
         <WeatherForm
           city={city}
           setCity={setCity}
@@ -107,7 +107,7 @@ export default function App() {
           error={error}
           darkMode={darkMode}
         />
-{/* esta vendria siendo la tarjeta de resultados solo aparecera si hay una ciudad cargada */}
+        {/* esta vendria siendo la tarjeta de resultados solo aparecera si hay una ciudad cargada */}
         {weather.city && (
           <WeatherCard
             weather={weather}

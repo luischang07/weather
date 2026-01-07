@@ -1,4 +1,4 @@
-# Whater
+# Weather App
 
 ## Requisitos
 
@@ -7,59 +7,52 @@
 
 ---
 
-## Inicialización del proyecto (Frontend)
+## Configuración del Frontend
 
-Desde la **raíz del proyecto**, ejecuta los siguientes comandos para eliminar dependencias anteriores e instalar las necesarias:
-
-```bash
-rm -rf node_modules/
-npm install
-```
-
-Una vez instaladas las dependencias, levanta el **frontend** con:
-
-```bash
-npm run dev
-```
-
-La aplicación estará disponible en:
-
-```
-http://localhost:5173/
-```
+1. Entra a la carpeta `front`:
+   ```bash
+   cd front
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Configura las variables de entorno:
+   ```bash
+   cp .env.example .env
+   ```
+4. Inicia el proyecto:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## Inicialización del servidor (Backend)
+## Configuración del Backend
 
-Accede a la carpeta `server`:
-
-```bash
-cd server
-```
-
-Instala las dependencias del servidor (si es la primera vez):
-
-```bash
-npm install
-```
-
-Luego, ejecuta el servidor con:
-
-```bash
-npm start
-```
-
-El servidor quedará corriendo en:
-
-```
-http://localhost:3000/
-```
+1. Entra a la carpeta `backend`:
+   ```bash
+   cd backend
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Configura las variables de entorno:
+   ```bash
+   cp .env.example .env
+   ```
+   *Nota: No olvides agregar tu `WEATHER_API_KEY` en el archivo `.env`.*
+4. Inicia el servidor:
+   ```bash
+   node index.js
+   ```
 
 ---
 
 ## Notas
 
-- Asegúrate de que los puertos **5173** (frontend) y **3000** (backend) estén disponibles.
-- Si usas variables de entorno, verifica que el archivo `.env` esté correctamente configurado.
-  aa
+- El frontend corre por defecto en `http://localhost:5173/`.
+- El backend corre por defecto en `http://localhost:3000/`.
+- Asegúrate de tener configuradas las variables de entorno para que la comunicación entre front y back funcione correctamente.
+

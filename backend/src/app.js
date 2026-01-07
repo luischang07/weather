@@ -6,9 +6,13 @@ const app = express();
 
 // preparan al servidor para entender datos
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
 // conectamos los módulos de rutas
 app.use("/api", weatherRoutes);
+
+// Middleware de manejo de errores
+const errorHandler = require("./middleware/errorHandler");
+app.use(errorHandler);
 
 module.exports = app;
